@@ -1,0 +1,7 @@
+Desabilitando a tela de descanço
+Abra o arquivo /etc/lightdm/lightdm.conf e adicione dentro de  [SeatDefaults] o comando:
+
+[SeatDefaults]
+xserver-command=X -s 0 -dpms
+ 
+Edite sendo root o arquivo lightdm.conf caso contrario ele nao vai aceitar as mudanças.

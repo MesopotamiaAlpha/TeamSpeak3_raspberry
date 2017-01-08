@@ -74,4 +74,72 @@ qemu-system-i386 é o programa para iniciar a maquina virtual.
 -smp 1 ainda nao sei XD
 **-redir este comando é para redirecionar as conecções vindas na porta, no caso udp ou tcp> porta inicial> porta final dentro da maquina virtual. Esta parte é importante entender para funcionarm no caso eu quero que a conecção tcp que entrar na porta 9022 seja redirecionada para a porta 22 da minha maquina virtual, assim nao entra em conflito com a minha porta 22 do meu raspberry.**
 
+Obs:Estas portas que coloquei é somente de exemplo, use a que prefirir.
+
 Então a opção redir é primordial para coneguir abrir as portas e funcionar sem entrar em conflito com seu sistema operacional, no caso da porta udp 9055 vai ser onde vai entrar a porta de voz do Teamspeak e redirecionar para dentro da maquina na porta de voz 9987.
+
+Neste primeiro momento de iniciar o sistema o processamento de um dos cores do raspberry vai ficar alto mas ao terminar de iniciar ira voltar ao normal, e é normal a demora do inicio do sistema por fato do baixo recurso e do alto processamento.
+
+
+##Quinta parte Iniciando o Teamspeak
+
+Bom agora que seu sistema ja esta rodando vamos baixar o Teamspeak dentro da maquina, no caso vamos baixar o Teamspeak Server versão 32 bits para Linux com o comando:
+
+wget http://dl.4players.de/ts/releases/3.0.13.6/teamspeak3-server_linux_x86-3.0.13.6.tar.bz2
+
+Depois disso vamos descompactar o Teamspeak:
+
+tar -jxvf teamspeak3-server_linux_x86-3.0.13.6.tar.bz2
+
+Vamos dar permissão total ao ts:
+
+sudo chmod 777 teamspeak3-server_linux_x86-3.0.13.6
+obs: se der erro de nao ser sudoer entre como root, execute o comando su e coloque a sua senha de root.
+
+Certo depois disso vamos dentro da pasta do Teamspeak:
+
+cd teamspeak3-server_linux_x86-3.0.13.6
+
+E inicie o servidor, vou recomendar o script minimal por que mais para frente vai ter mais comando para usar todas as funcionalidades do servidor:
+
+./ts3server_minimal_runscript.sh
+
+E depois disso aguarde ele iniciar o servidor somente para você configurar ele de inici e registrar o token de server admin.
+Obs: Para iniciar o servidor ele demora BASTANTE, leva em torno de 15-20 min somente para iniciar. Quando aparecer na tela que a palavra de Query onde mostra as portas utilizadas e etc o servidor ja terminou de levantar, caso contrario aguarde.
+
+Depois de iniciado configure e finalize ele.
+
+
+##Sexta parte Terminando a configuração
+
+Agora vamos configurar o restante das portas de uso do Teamspeak, o servidor usa as seguintes portas:
+voz udp 9055
+arquivo  tcp 30033
+query tcp 10011
+
+E agora no momento de iniciar o servidor vamos ter que dizer para o Teamspeak usar estas portas por fato de caso você colocar mais de um servidor no seu raspberry você vai precisar direcionar para outras portas, mas caso queira ficar somente com as portas padrão nao tem necessidade de mudar as portas.
+
+Esta parte pode ficar um pouco complicado mas como o servidor precisa de 3 portas para usar todas as funcionalidades nós precisamos iniciar a nossa maquina virtual com redir para 3 portas tirando a de ssh caso queira usar.
+Entao vamos usar este comando para iniciar a nossa maquina virtual: 
+
+qemu-system-i386 -cpu SandyBridge -hda debian.img -m 80 -smp 1 -redir tcp:9022::22 -redir udp:9055::9987 -redir tcp:30035::30035 -redir tcp:10015::10015
+
+**Explicando**
+qemu-system-i386 é o programa para iniciar a maquina virtual.
+-cpu o tipo de cpu que vai ser usada.
+-hda aqui é onde esta a imagem que criamos e ele vai simular um hd apartir da imagem.
+-m é a quantidade de memoria que vai ser alocada para cada maquina virtual, no caso eu optei por 80 megas e gostei.
+-smp 1 ainda nao sei XD
+**redir Agora vamos para as portas, preciso de 3 portas para a voz,arquivo e query então adicinei as 3 mais a ssh.**
+
+E agora dentro da sua maquina virtual você vai iniciar o Teamspeak e pedindo para que ele use as portas que você abriu, assim você vai conseguir usar todas as portas de forma normal:
+
+./ts3server_minimal_runscript.sh filetransfer_ip=0.0.0.0 filetransfer_port=30035 query_ip=0.0.0.0 query_port=10015
+
+Desta forma quando alguem for upar algum arquivo no seu servidor ou fazer alguma query o proprio TS vai direcionar para a porta que você pediu.
+
+
+##Final
+
+Bom até esta parte o teu servidor ja deve estar rodando e funcionando perfeitamente, em termos de performance da maquina virtual ainda nao encontrei maneiras de acelerar o carregamento do sistema e do servidor, mas o desempenho do client do ts esta perfeito.
+Tenho uma pasta no meu github que são de coisas opcionais que coloquei para automatizar o servidor em casos de quedas de luz e etc.. Mas não sou programador então algumas coisas podem estar em um estado primario de programação.

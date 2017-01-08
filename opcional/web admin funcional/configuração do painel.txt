@@ -1,0 +1,3 @@
+Painel criado pelo Psychokiller http://www.psychoscripts.de/
+
+para configurar primeiro adicione o seu ip na white list do ts (/pasta do ts/query_ip_white_list) e em seguida vai no arquivo de configuração do painel e coloque o ip do seu servidor

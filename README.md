@@ -185,14 +185,3 @@ udp 9987
 tcp 30033
 tcp 10011
 tcp 41144
-
-servidor 1
-1kmckIU6
-
-servidor 2
-EsxeuoQv
-
-servidor 3
-LpeSVov8OlYgwjUdpkyqQ7T5wKlszrNBvoPwPow8
-mVhj3BNC
-

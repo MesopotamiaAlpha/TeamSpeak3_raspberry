@@ -136,11 +136,6 @@ vcgencmd measure_temp
 
 para iniciar o programa com pid adicione & no final
 
-
-Bem vindo ao servidor de testes,caso tenha algum problema procure por djzefx para reportar o erro.
-Qualquer erro reporte para djzefx
-
-
 *********************************
 para deixar o grub iniciar o sistema automaticamente
 Precisamos acessa-lo com um editor de texto como super usuário. Neste exemplo vou utilizar o Gedit para editar o arquivo do grub.
@@ -168,9 +163,6 @@ Agora utilize o menu do Gedit e salve a alteração. Feito isso, volte para o te
 Está feito, inicialize o sistema e veja a alteração.  Veja aqui também outra forma de personalizar o Grub com o grub-customizer.
 
 **************************************
-
-cd /home/jose/teamspeak3-server_linux_x86
-./ts3server_startscript.sh
 
 para iniciar um script no inicio edite o arquivo /etc/profile, adicione o caminho do script no inicio deste arquivo
 

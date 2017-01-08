@@ -12,11 +12,8 @@ Então foi onde resolvi iniciar este projeto de rodar o servidor de Teamspeak de
 
 Estou utilizando o raspberry pi 3 e sistema operacional Raspbian mesmo do site da raspberry, fiz uma pequena modificação no sistema somente para nao ter a tela de descanço e o aumento da memoria swap onde deixei dentro da pasta opcional o arquivo com o nome zram.
 
-<<<<<<< HEAD
+
 ######Primeira parte Preparando o sistema
-=======
-#Primeira parte Preparando o sistema
->>>>>>> origin/master
 
 Bom durante a pesquisa verifiquei que a melhor forma que encontraram de conseguir fazer o servidor do Teamspeak de 32 bits rodar na arquitetura ARM foi de rodar uma maquina virtual dentro do raspberry e rodar o Teamspeak dentro dele, imaginei que talvez ia usar muito recurso do rasp mas consegui achar um meio termo dele onde rodou muito bem.
 Para isso vamos instalar no raspbian (sistema operacional usado no raspberry) o qemu:

@@ -1,0 +1,24 @@
+para deixar o grub iniciar o sistema automaticamente
+Precisamos acessa-lo com um editor de texto como super usuário. Neste exemplo vou utilizar o Gedit para editar o arquivo do grub.
+
+O arquivo de configuração do gerenciador de boot fica localizado na pasta /etc.
+
+Clique aqui para saber mais SOBRE PASTAS E DIRETÓRIOS NO UBUNTU LINUX. 
+
+O que temos que fazer é bem simples, abra o terminal, CTRL+ALT+T. O arquivo de configuração é o Grub. 
+
+~$sudo gedit /etc/default/grub
+
+Ao abrir o arquivo procure pela linha onde há a seguinte diretiva:
+
+GRUB_DEFAULT=0
+
+Agora troque o "0" por "5", sem aspas, como de fato está, ficando assim:
+
+GRUB_DEFAULT=5
+
+Agora utilize o menu do Gedit e salve a alteração. Feito isso, volte para o terminal, vamos atualizar o Grub. Digite o comando:
+
+~$sudo update-grub
+
+Está feito, inicialize o sistema e veja a alteração.

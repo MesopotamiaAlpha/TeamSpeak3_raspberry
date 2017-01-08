@@ -1,0 +1,8 @@
+para desabilitar o screensaver dentro da maquina virtual
+The easiest way is to add the parameter consoleblank=0 to your kernel command-line at boot-time.
+
+Open /etc/default/grub in your favorite editor; you will need to use sudo (for vi, nano, etc.) or gksudo (for gedit, etc.).
+Then add consoleblank=0 to the GRUB_CMDLINE_LINUX_DEFAULT=, parameter.
+e.g. yours may say:
+GRUB_CMDLINE_LINUX_DEFAULT="quiet splash consoleblank=0"
+Then run sudo update-grub, and reboot.

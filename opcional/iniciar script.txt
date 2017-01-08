@@ -1,0 +1,1 @@
+para iniciar um script no inicio edite o arquivo /etc/profile, adicione o caminho do script no inicio deste arquivo

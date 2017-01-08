@@ -1,0 +1,15 @@
+para logar automaticamente na maquina virtual
+acesse este arquivo
+etc/systemd/system/getty.target.wants/getty@tty1.service
+
+mude a linha
+
+  ExecStart=-/sbin/agetty --noclear %I $TERM
+para
+
+  ExecStart=-/sbin/agetty --noclear -a root %I $TERM
+This just follows from the agetty manual page, which states, among other things:
+
+-a, --autologin username
+
+Log the specified user automatically in without asking for a login name and password. The -f username option is added to the /bin/login command line by default. The --login-options option changes this default behavior and then only \u is replaced by the username and no other option is added to the login command line.

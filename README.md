@@ -5,14 +5,14 @@ Logo mais vou estruturar e colocar o passo a passo
 
 !!!!!!!!!!!!!!! TODAS AS INFORMAÇÕES ABAIXO ESTAO BAGUNÇADAS E SÃO ANOTAÇÕES COM O TEMPO ESTOU ARRUMANDO !!!!!!!!!!!!!!!!!!!!!!!!
 
-Bom eu estou documentando este projeto pois eu levei alguns meses para conseguir o resultado que eu queria no servidor, e quero compartilhar o conhecimento que adquiri para outras pessoas que queiram fazer o mesmo, por muito tempo eu conseguia encontrar algumas pessoas que conseguiram instalar e rodar o Teamspeak server no raspberry mas boa parte nao documentava o processo, e alguns casos que encontrava informações elas nao funcionavam da maneira correta, obrigando a ter que pesquisar ainda mais para conseguir fazer tudo funcionar.
-Eu tenho conhecimento do Exagear que consegue fazer os programas de 32 bits rodarem de forma "nativa" na arquitetura ARM, mas no meu caso nao tenho 93 reais para investir em um programa que derrepente posso usar em poucas ocasioes.
+Bom eu estou documentando este projeto pois eu levei alguns meses para conseguir o resultado que eu queria no servidor, e quero compartilhar o conhecimento que adquiri para outras pessoas que queiram fazer o mesmo, por muito tempo eu conseguia encontrar algumas pessoas que conseguiram instalar e rodar o Teamspeak server no raspberry mas boa parte não documentava o processo, e alguns casos que encontrava informações elas nao funcionavam da maneira correta, obrigando a ter que pesquisar ainda mais para conseguir fazer tudo funcionar.
+Eu tenho conhecimento do Exagear que consegue fazer os programas de 32 bits rodarem de forma "nativa" na arquitetura ARM, mas no meu caso não tenho 93 reais para investir em um programa que derrepente posso usar em poucas ocasioes,alem do mumble.
 Então foi onde resolvi iniciar este projeto de rodar o servidor de Teamspeak de maneira alternativa.
-Vou tentar deixar o mais simples de entender pois nao quero que outros tenham a mesma dificuldade que tive e tempo que levei para entender e rodar.
-Lembrando que esta escolha do qemu tem um desempenho bem devagar para iniciar a maquina virtual e iniciar o servidor dentro dele, é uma escolha alternativa mesmo para quem nao quer investir com o Exagear, mas ele nao afeta em quase nada no raspberry.
+Vou tentar deixar o mais simples de entender pois não quero que outros tenham a mesma dificuldade que tive e tempo que levei para entender e rodar.
+Lembrando que esta escolha do qemu tem um desempenho bem devagar para iniciar a maquina virtual e iniciar o servidor dentro dele, é uma escolha alternativa mesmo para quem não quer investir com o Exagear, mas ele não afeta em quase nada no raspberry.
 
 
-Estou utilizando o raspberry pi 3 e sistema operacional Raspbian mesmo do site da raspberry, fiz uma pequena modificação no sistema somente para nao ter a tela de descanço e o aumento da memoria swap onde deixei dentro da pasta opcional o arquivo com o nome zram.
+Estou utilizando o raspberry pi 3 e sistema operacional Raspbian mesmo do site da raspberry, fiz uma pequena modificação no sistema somente para não ter a tela de descanço e o aumento da memoria swap onde deixei dentro da pasta opcional o arquivo com o nome zram.
 
 ##Primeira parte Preparando o sistema
 
@@ -131,6 +131,7 @@ qemu-system-i386 é o programa para iniciar a maquina virtual.
 -m é a quantidade de memoria que vai ser alocada para cada maquina virtual, no caso eu optei por 80 megas e gostei.
 -smp 1 ainda nao sei XD
 **redir Agora vamos para as portas, preciso de 3 portas para a voz,arquivo e query então adicinei as 3 mais a ssh.**
+Obs: Caso tenha certeza que esta correto você pode iniciar a maquina com a opção --nographic para nao aparecer a tela do qemu.
 
 E agora dentro da sua maquina virtual você vai iniciar o Teamspeak e pedindo para que ele use as portas que você abriu, assim você vai conseguir usar todas as portas de forma normal:
 

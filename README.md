@@ -37,7 +37,7 @@ obs: no caso do linux somente rodando o comando qemu-img ele ja chama o programa
 
 qemu-img.exe create -f qcow2 C:\debian.img 1500M
 
-**Explicando**:
+<p>**Explicando**:</p>
 qemu-img.exe é o programa para criar a imagem.
 create pedindo para criar.
 -f é o formato usado para a imagem.

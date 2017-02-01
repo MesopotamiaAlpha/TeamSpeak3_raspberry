@@ -33,11 +33,11 @@ obs: no caso do linux somente rodando o comando qemu-img ele ja chama o programa
 
 qemu-img.exe create -f qcow2 C:\debian.img 1500M
 
-**Explicando**:
+<p>**Explicando**:</p>
 qemu-img.exe é o programa para criar a imagem.
 create pedindo para criar.
--f é o formato usado para a imagem.
-C:\debian.img é o local e o nome que vai ser criado a imagem.
+<p>-f é o formato usado para a imagem.</p>
+<p>C:\debian.img é o local e o nome que vai ser criado a imagem.</p>
 1500M é o tamanho que vai ser criado a imagem e neste caso achei que este tamanho esta perfeito.
 
 ##3- Terceira parte Instalando o sistema
@@ -63,12 +63,12 @@ Para iniciar a maquina virtual você vai colocar este comando no termina:
 
 qemu-system-i386 -cpu SandyBridge -hda debian.img -m 80 -smp 1 -redir tcp:9022::22 -redir udp:9055::9987
 
-**Explicando**
+<p>**Explicando**</p>
 qemu-system-i386 é o programa para iniciar a maquina virtual.
--cpu o tipo de cpu que vai ser usada.
--hda aqui é onde esta a imagem que criamos e ele vai simular um hd apartir da imagem.
--m é a quantidade de memoria que vai ser alocada para cada maquina virtual, no caso eu optei por 80 megas e gostei.
--smp 1 ainda nao sei XD
+<p>-cpu o tipo de cpu que vai ser usada.</p>
+<p>-hda aqui é onde esta a imagem que criamos e ele vai simular um hd apartir da imagem.</p>
+<p>-m é a quantidade de memoria que vai ser alocada para cada maquina virtual, no caso eu optei por 80 megas e gostei.</p>
+<p>-smp 1 ainda nao sei XD</p>
 **-redir este comando é para redirecionar as conecções vindas na porta, no caso udp ou tcp> porta inicial> porta final dentro da maquina virtual. Esta parte é importante entender para funcionarm no caso eu quero que a conecção tcp que entrar na porta 9022 seja redirecionada para a porta 22 da minha maquina virtual, assim nao entra em conflito com a minha porta 22 do meu raspberry.**
 
 Obs:Estas portas que coloquei é somente de exemplo, use a que prefirir.
@@ -121,13 +121,13 @@ Entao vamos usar este comando para iniciar a nossa maquina virtual:
 
 qemu-system-i386 -cpu SandyBridge -hda debian.img -m 80 -smp 1 -redir tcp:9022::22 -redir udp:9055::9987 -redir tcp:30035::30035 -redir tcp:10015::10015
 
-**Explicando**
+<p>**Explicando**</p>
 qemu-system-i386 é o programa para iniciar a maquina virtual.
--cpu o tipo de cpu que vai ser usada.
--hda aqui é onde esta a imagem que criamos e ele vai simular um hd apartir da imagem.
--m é a quantidade de memoria que vai ser alocada para cada maquina virtual, no caso eu optei por 80 megas e gostei.
--smp 1 ainda nao sei XD
-**redir Agora vamos para as portas, preciso de 3 portas para a voz,arquivo e query então adicinei as 3 mais a ssh.**
+<p>-cpu o tipo de cpu que vai ser usada.</p>
+<p>-hda aqui é onde esta a imagem que criamos e ele vai simular um hd apartir da imagem.</p>
+<p>-m é a quantidade de memoria que vai ser alocada para cada maquina virtual, no caso eu optei por 80 megas e gostei.</p>
+<p>-smp 1 ainda nao sei XD</p>
+<p>**redir Agora vamos para as portas, preciso de 3 portas para a voz,arquivo e query então adicinei as 3 mais a ssh.**</p>
 Obs: Caso tenha certeza que esta correto você pode iniciar a maquina com a opção --nographic para nao aparecer a tela do qemu.
 
 E agora dentro da sua maquina virtual você vai iniciar o Teamspeak e pedindo para que ele use as portas que você abriu, assim você vai conseguir usar todas as portas de forma normal:

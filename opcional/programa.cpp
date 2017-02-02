@@ -4,26 +4,24 @@
 //outra materia para cores https://www.vivaolinux.com.br/dica/Shell-script-com-texto-colorido
 //Iniciador de servidor no raspberry pi 3
 
-#include <iostream>
+#include <iostream> //biblioteca de entrada/saida
 #include <unistd.h> //biblioteca do sleep
-#include <cstdlib>
+#include <cstdlib> //biblioteca system
 
 using namespace std;
 
-int final(){
+void final(){
 
 	int finalvar;
 	cout<<"\n Finalizado?";
 	cout<<"\n 1 Sim";
 	cout<<"\n 2 Nao\n";
 	cin>> finalvar;
-	switch(finalvar){
-		case 1:
-			cout<<"\033[32mFinalizado com sucesso\033[0m \n";
-		return 0;
-		case 2:
-			//menu();
-		return 0;
+	if(finalvar==1){
+		cout<<"\033[32mFinalizado com sucesso\033[0m \n";
+		//break;
+	}else{
+		cout<<"voltar menu";
 	}
 }
 
@@ -35,7 +33,7 @@ int servidores(){
 	int pid2;
 	int pid3;
 
-
+    
 	cout<<"---------------------------------------\n";
 	cout << "|Escolha qual servidor ira iniciar:   |\n";
 	cout << "|Servidor 1: Nuclear Squad            |\n";
@@ -79,6 +77,7 @@ int servidores(){
 			final();
 			return 0;
 		}
+	
 }
 
 
@@ -174,6 +173,7 @@ int main (){
 
 	int opcao;
 	system("clear");
+	do{
 	cout<< "\n\033[1;31mBem vindo ao iniciador 1.0!\033[0m\n";
 	cout<<"---------------------------------------\n";
 	cout<<"|  Escolha qual programa deseja usar: |\n";
@@ -189,19 +189,20 @@ int main (){
 	switch (opcao){
 		case 1:
 			temperatura();
-		return 0;
+		break;
 		case 2:
 			servidores();
-		return 0;
+		break;
 		case 3:
 			glances();
-		return 0;
+		break;
 		case 4:
 			htop();
-		return 0;
+		break;
 		case 5:
 			nethogs();
-		return 0;
+		break;
 	}
+}while(opcao);
 }
 

@@ -1,4 +1,3 @@
-
 # TeamSpeak3_raspberry
 Projeto de servidor Ts3 no Raspberry arm
 Este projeto ainda esta em fase de desenvolvimento,mas basicamente é para rodar um servidor de Teamspeak 3 32bits dentro de um Raspberry pi 3 com arquitetura ARM.
@@ -19,6 +18,7 @@ Para isso vamos instalar no raspbian (sistema operacional usado no raspberry) o 
 
 **sudo apt-get install qemu**
 
+
 obs:Encontrei alguns projetos mostrando que era necessário compilar e outros fazer uma programação para funcionar o qemu de forma correta, mas no meu caso nao foi necessario.
 Beleza com o qemu instalado no raspberry agora vamos preparar o sistema onde o Teamspeak vai rodar, mas temos 2 formas de preparar ele e agora fica a sua escolha, podemos preparar usando o Linux ou usando o Windows e caso queria usar o Windows você precisa instalar o qemu tambem no outro sistema somente para fazer a imagem.
 
@@ -31,13 +31,19 @@ Agora com a iso baixada e o qemu instalado eu vou seguir os passo que utilizei p
 Vamos criar a imagem agora para rodar o sistema, abra o CMD e entre na pasta do qemu _C:\Program Files\qemu_ e para criar a imagem use este comando:
 obs: no caso do linux somente rodando o comando qemu-img ele ja chama o programa sem a necessidade de entrar na pasta.
 
-qemu-img.exe create -f qcow2 C:\debian.img 1500M
+**qemu-img.exe create -f qcow2 C:\debian.img 1500M**
+
 
 **Explicando:**
+
 -qemu-img.exe: É o programa usado para criar a imagem.
+
 -create: Pedindo para criar.
+
 -f: É o formato usado para a imagem.
+
 -C:\debian.img :É o local e o nome que vai ser criado a imagem.
+
 -1500M: É o tamanho que vai ser criado a imagem e neste caso achei que este tamanho esta perfeito.
 
 ------
@@ -49,12 +55,16 @@ Agora continuando dentro da pasta do quemu use este comando no CMD para iniciar 
 **qemu-system-i386.exe -cpu SandyBridge -hda C:\debian.img -cdrom C:\debian-8.6.0-i386-netinst.iso -boot d -m 512 -smp 1**
 
 **Explicando**:
-
 -qemu-system-i386.exe: É o programa para iniciar a maquina virtual.
+
 -cpu: É o tipo de cpu que vai ser usado e neste caso eu tive problemas com a arquitetura 486 proposta por outras pessoas, e pesquisando encontrei este SandyBridge no qual funcionou sem problemas.
+
 -cdrom: É onde esta a iso do netinst.
+
 -boot: Nao sei XD
+
 -m: Aqui é a quantidade de memoria que vai ser alocada para esta maquina, por ser instalação recomendo que deixe 512 mesmo somente para ser mais rapidinho.
+
 -smp não sei tambem XD
 
 Após isto o qemu vai iniciar a sua imagem criada (debian.img) e instalar o sistema dentro dele, desta parte você pode seguir da forma que prefirir.
@@ -71,10 +81,15 @@ Para iniciar a maquina virtual você vai colocar este comando no termina:
 **Explicando**
 
 -qemu-system-i386: É o programa para iniciar a maquina virtual.
+
 -cpu: O tipo de cpu que vai ser usada.
+
 -hda: Aqui é onde esta a imagem que criamos e ele vai simular um hd apartir da imagem.
+
 -m: É a quantidade de memoria que vai ser alocada para cada maquina virtual, no caso eu optei por 80 megas e gostei.
+
 -smp: ainda nao sei XD
+
 **-redir: Este comando é para redirecionar as conecções vindas na porta, no caso udp ou tcp> porta inicial> porta final dentro da maquina virtual. Esta parte é importante entender para funcionarm no caso eu quero que a conecção tcp que entrar na porta 9022 seja redirecionada para a porta 22 da minha maquina virtual, assim nao entra em conflito com a minha porta 22 do meu raspberry.*
 
 Obs:Estas portas que coloquei é somente de exemplo, use a que prefirir.
@@ -93,20 +108,20 @@ wget http://dl.4players.de/ts/releases/3.0.13.6/teamspeak3-server_linux_x86-3.0.
 
 Depois disso vamos descompactar o Teamspeak:
 
-tar -jxvf teamspeak3-server_linux_x86-3.0.13.6.tar.bz2
+**tar -jxvf teamspeak3-server_linux_x86-3.0.13.6.tar.bz2**
 
 Vamos dar permissão total ao ts:
 
-sudo chmod 777 teamspeak3-server_linux_x86-3.0.13.6
+**sudo chmod 777 teamspeak3-server_linux_x86-3.0.13.6**
 obs: se der erro de nao ser sudoer entre como root, execute o comando su e coloque a sua senha de root.
 
 Certo depois disso vamos dentro da pasta do Teamspeak:
 
-cd teamspeak3-server_linux_x86-3.0.13.6
+**cd teamspeak3-server_linux_x86-3.0.13.6**
 
 E inicie o servidor, vou recomendar o script minimal por que mais para frente vai ter mais comando para usar todas as funcionalidades do servidor:
 
-./ts3server_minimal_runscript.sh
+**./ts3server_minimal_runscript.sh**
 
 E depois disso aguarde ele iniciar o servidor somente para você configurar ele de inici e registrar o token de server admin.
 Obs: Para iniciar o servidor ele demora BASTANTE, leva em torno de 15-20 min somente para iniciar. Quando aparecer na tela que a palavra de Query onde mostra as portas utilizadas e etc o servidor ja terminou de levantar, caso contrario aguarde.
@@ -126,15 +141,20 @@ E agora no momento de iniciar o servidor vamos ter que dizer para o Teamspeak us
 Esta parte pode ficar um pouco complicado mas como o servidor precisa de 3 portas para usar todas as funcionalidades nós precisamos iniciar a nossa maquina virtual com redir para 3 portas tirando a de ssh caso queira usar.
 Entao vamos usar este comando para iniciar a nossa maquina virtual: 
 
-qemu-system-i386 -cpu SandyBridge -hda debian.img -m 80 -smp 1 -redir tcp:9022::22 -redir udp:9055::9987 -redir tcp:30035::30035 -redir tcp:10015::10015
+**qemu-system-i386 -cpu SandyBridge -hda debian.img -m 80 -smp 1 -redir tcp:9022::22 -redir udp:9055::9987 -redir tcp:30035::30035 -redir tcp:10015::10015**
 
 **Explicando**
 
 -qemu-system-i386: É o programa para iniciar a maquina virtual.
+
 -cpu: O tipo de cpu que vai ser usada.
+
 -hda: Aqui é onde esta a imagem que criamos e ele vai simular um hd apartir da imagem.
+
 -m: É a quantidade de memoria que vai ser alocada para cada maquina virtual, no caso eu optei por 80 megas e gostei.
+
 -smp: Ainda nao sei XD</p>
+
 **redir: Agora vamos para as portas, preciso de 3 portas para a voz,arquivo e query então adicinei as 3 mais a ssh.**
 
 Obs: Caso tenha certeza que esta correto você pode iniciar a maquina com a opção --nographic para nao aparecer a tela do qemu.

@@ -11,7 +11,7 @@ Lembrando que esta escolha do qemu tem um desempenho bem devagar para iniciar a 
 
 Estou utilizando o raspberry pi 3 e sistema operacional Raspbian mesmo do site da raspberry, fiz uma pequena modificação no sistema somente para não ter a tela de descanço e o aumento da memoria swap onde deixei dentro da pasta opcional o arquivo com o nome zram.
 
-##1- Primeira parte Preparando o sistema
+## 1- Primeira parte Preparando o sistema
 
 Bom durante a pesquisa verifiquei que a melhor forma que encontraram de conseguir fazer o servidor do Teamspeak de 32 bits rodar na arquitetura ARM foi de rodar uma máquina virtual dentro do raspberry e rodar o Teamspeak dentro dele, imaginei que talvez ia usar muito recurso do rasp mas consegui achar um meio termo dele onde rodou muito bem.
 Para isso vamos instalar no raspbian (sistema operacional usado no raspberry) o qemu:
@@ -19,10 +19,9 @@ Para isso vamos instalar no raspbian (sistema operacional usado no raspberry) o 
 sudo apt-get install qemu
 
 obs:Encontrei alguns projetos mostrando que era necessário compilar e outros fazer uma programação para funcionar o qemu de forma correta, mas no meu caso nao foi necessario.
-
 Beleza com o qemu instalado no raspberry agora vamos preparar o sistema onde o Teamspeak vai rodar, mas temos 2 formas de preparar ele e agora fica a sua escolha, podemos preparar usando o Linux ou usando o Windows e caso queria usar o Windows você precisa instalar o qemu tambem no outro sistema somente para fazer a imagem.
 
-##2- Segunda parte Baixando e preparando a imagem
+## 2- Segunda parte Baixando e preparando a imagem
 
 Certo agora vamos baixar a iso do sistema que vamos usar, no caso é o [Debian netinst] (https://www.debian.org/CD/netinst/), é uma versão reduzida do debian e devemos baixar a versao i386 (x32) ate a presente data esta nesta versão debian-8.6.0-i386-netinst.iso. Neste [link] (https://cdimage.debian.org/debian-cd/8.6.0/i386/iso-cd/) possui todas as versões da iso.
 
@@ -33,20 +32,23 @@ obs: no caso do linux somente rodando o comando qemu-img ele ja chama o programa
 
 qemu-img.exe create -f qcow2 C:\debian.img 1500M
 
-<p>**Explicando**:</p>
+**Explicando:**
 qemu-img.exe é o programa para criar a imagem.
 create pedindo para criar.
 <p>-f é o formato usado para a imagem.</p>
 <p>C:\debian.img é o local e o nome que vai ser criado a imagem.</p>
 1500M é o tamanho que vai ser criado a imagem e neste caso achei que este tamanho esta perfeito.
 
-##3- Terceira parte Instalando o sistema
+------
+------
+
+## 3- Terceira parte Instalando o sistema
 
 Agora continuando dentro da pasta do quemu use este comando no CMD para iniciar a maquina e instalar o sistema:
 
 qemu-system-i386.exe -cpu SandyBridge -hda C:\debian.img -cdrom C:\debian-8.6.0-i386-netinst.iso -boot d -m 512 -smp 1
 
-<p>**Explicando**:</p>
+**Explicando**:
 qemu-system-i386.exe é o programa para iniciar a maquina virtual.
 <p>-cpu é o tipo de cpu que vai ser usado e neste caso eu tive problemas com a arquitetura 486 proposta por outras pessoas, e pesquisando encontrei este SandyBridge no qual funcionou sem problemas.</p>
 <p>-cdrom é onde esta a iso do netinst.</p>
@@ -56,20 +58,22 @@ qemu-system-i386.exe é o programa para iniciar a maquina virtual.
 
 Após isto o qemu vai iniciar a sua imagem criada (debian.img) e instalar o sistema dentro dele, desta parte você pode seguir da forma que prefirir.
 
-##4- Quarta parte Iniciando o sistema
+------
+------
+## 4- Quarta parte Iniciando o sistema
 
 Certo agora com o sistema instalado dentro da imagem você vai transferir a imagem para dentro do seu raspberry, e uma das partes importantes entra agora.
 Para iniciar a maquina virtual você vai colocar este comando no termina:
 
 qemu-system-i386 -cpu SandyBridge -hda debian.img -m 80 -smp 1 -redir tcp:9022::22 -redir udp:9055::9987
 
-<p>**Explicando**</p>
+**Explicando**
 qemu-system-i386 é o programa para iniciar a maquina virtual.
 <p>-cpu o tipo de cpu que vai ser usada.</p>
 <p>-hda aqui é onde esta a imagem que criamos e ele vai simular um hd apartir da imagem.</p>
 <p>-m é a quantidade de memoria que vai ser alocada para cada maquina virtual, no caso eu optei por 80 megas e gostei.</p>
 <p>-smp 1 ainda nao sei XD</p>
-**-redir este comando é para redirecionar as conecções vindas na porta, no caso udp ou tcp> porta inicial> porta final dentro da maquina virtual. Esta parte é importante entender para funcionarm no caso eu quero que a conecção tcp que entrar na porta 9022 seja redirecionada para a porta 22 da minha maquina virtual, assim nao entra em conflito com a minha porta 22 do meu raspberry.**
+**-redir este comando é para redirecionar as conecções vindas na porta, no caso udp ou tcp> porta inicial> porta final dentro da maquina virtual. Esta parte é importante entender para funcionarm no caso eu quero que a conecção tcp que entrar na porta 9022 seja redirecionada para a porta 22 da minha maquina virtual, assim nao entra em conflito com a minha porta 22 do meu raspberry.*
 
 Obs:Estas portas que coloquei é somente de exemplo, use a que prefirir.
 
@@ -77,12 +81,13 @@ Então a opção redir é primordial para coneguir abrir as portas e funcionar s
 
 Neste primeiro momento de iniciar o sistema o processamento de um dos cores do raspberry vai ficar alto mas ao terminar de iniciar ira voltar ao normal, e é normal a demora do inicio do sistema por fato do baixo recurso e do alto processamento.
 
-
-##5- Quinta parte Iniciando o Teamspeak
+------
+------
+## 5- Quinta parte Iniciando o Teamspeak
 
 Bom agora que seu sistema ja esta rodando vamos baixar o Teamspeak dentro da maquina, no caso vamos baixar o Teamspeak Server versão 32 bits para Linux com o comando:
 
-wget http://dl.4players.de/ts/releases/3.0.13.6/teamspeak3-server_linux_x86-3.0.13.6.tar.bz2
+ wget http://dl.4players.de/ts/releases/3.0.13.6/teamspeak3-server_linux_x86-3.0.13.6.tar.bz2
 
 Depois disso vamos descompactar o Teamspeak:
 
@@ -107,7 +112,7 @@ Obs: Para iniciar o servidor ele demora BASTANTE, leva em torno de 15-20 min som
 Depois de iniciado configure e finalize ele.
 
 
-##6- Sexta parte Terminando a configuração
+## 6- Sexta parte Terminando a configuração
 
 Agora vamos configurar o restante das portas de uso do Teamspeak, o servidor usa as seguintes portas:
 voz udp 9055
@@ -121,7 +126,7 @@ Entao vamos usar este comando para iniciar a nossa maquina virtual:
 
 qemu-system-i386 -cpu SandyBridge -hda debian.img -m 80 -smp 1 -redir tcp:9022::22 -redir udp:9055::9987 -redir tcp:30035::30035 -redir tcp:10015::10015
 
-<p>**Explicando**</p>
+**Explicando**
 qemu-system-i386 é o programa para iniciar a maquina virtual.
 <p>-cpu o tipo de cpu que vai ser usada.</p>
 <p>-hda aqui é onde esta a imagem que criamos e ele vai simular um hd apartir da imagem.</p>
@@ -137,7 +142,7 @@ E agora dentro da sua maquina virtual você vai iniciar o Teamspeak e pedindo pa
 Desta forma quando alguem for upar algum arquivo no seu servidor ou fazer alguma query o proprio TS vai direcionar para a porta que você pediu.
 
 
-##Final
+## Final
 
 Bom até esta parte o teu servidor ja deve estar rodando e funcionando perfeitamente, em termos de performance da maquina virtual ainda nao encontrei maneiras de acelerar o carregamento do sistema e do servidor, mas o desempenho do client do ts esta perfeito.
 Tenho uma pasta no meu github que são de coisas opcionais que coloquei para automatizar o servidor em casos de quedas de luz e etc.. Mas não sou programador então algumas coisas podem estar em um estado primario de programação.

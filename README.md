@@ -55,6 +55,7 @@ Agora continuando dentro da pasta do quemu use este comando no CMD para iniciar 
 **qemu-system-i386.exe -cpu SandyBridge -hda C:\debian.img -cdrom C:\debian-8.6.0-i386-netinst.iso -boot d -m 512 -smp 1**
 
 **Explicando**:
+
 -qemu-system-i386.exe: É o programa para iniciar a maquina virtual.
 
 -cpu: É o tipo de cpu que vai ser usado e neste caso eu tive problemas com a arquitetura 486 proposta por outras pessoas, e pesquisando encontrei este SandyBridge no qual funcionou sem problemas.

@@ -1,4 +1,4 @@
-para logar automaticamente na maquina virtual
+Para logar automaticamente na maquina virtual
 acesse este arquivo
 etc/systemd/system/getty.target.wants/getty@tty1.service
 

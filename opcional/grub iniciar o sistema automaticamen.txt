@@ -1,4 +1,5 @@
-para deixar o grub iniciar o sistema automaticamente
+Para deixar o grub iniciar o sistema automaticamente
+
 Precisamos acessa-lo com um editor de texto como super usuário. Neste exemplo vou utilizar o Gedit para editar o arquivo do grub.
 
 O arquivo de configuração do gerenciador de boot fica localizado na pasta /etc.

@@ -1,1 +1,3 @@
-para iniciar um script no inicio edite o arquivo /etc/profile, adicione o caminho do script no inicio deste arquivo
+Para colocar um script para rodar assim que o sistema é iniciado.
+
+Caso queira colocar o script para iniciar automaticamente assim que o sistema começar a subir edite o arquivo /etc/profile, adicione o caminho do script no inicio deste arquivo

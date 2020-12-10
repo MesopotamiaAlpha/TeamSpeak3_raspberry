@@ -1,2 +1,2 @@
-para conferir se a porta 9055 esta online use o netcat para pingar na porta UDP, nc -zuvv calbox.ddns.net 9055,na resposta vai mostrar se teve sucesso ou nao ao conectar a porta,verifiquei que caso a porta esteja fechada ele nao esta trazendo nenhum resultado.
+Para conferir se a porta 9055 (porta usada para este projeto) está online use o netcat para pingar na porta UDP, nc -zuvv calbox.ddns.net 9055,na resposta vai mostrar se teve sucesso ou nao ao conectar a porta,verifiquei que caso a porta esteja fechada ele nao esta trazendo nenhum resultado.
 E para verficar se a porta TCP esta funcionando use o comando -zvv e a porta

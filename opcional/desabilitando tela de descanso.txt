@@ -1,4 +1,4 @@
-Desabilitando a tela de descanço no raspberry
+Desabilitando a tela de descanso no raspberry
 Abra o arquivo /etc/lightdm/lightdm.conf e adicione dentro de  [SeatDefaults] o comando:
 
 [SeatDefaults]

@@ -67,7 +67,7 @@
     Agora continuando dentro da pasta do quemu use este comando no CMD para iniciar a maquina e instalar o sistema:
 </p>
 
-<code>qemu-system-i386.exe -cpu SandyBridge -hda C:\debian.img -cdrom C:\debian-8.6.0-i386-netinst.iso -boot d -m 512 -smp 1</code>
+<code><strong>qemu-system-i386.exe -cpu SandyBridge -hda C:\debian.img -cdrom C:\debian-8.6.0-i386-netinst.iso -boot d -m 512 -smp 1</strong></code>
 
 Explicando:
 <ul>
@@ -95,7 +95,7 @@ Explicando:
     Para iniciar a maquina virtual você vai colocar este comando no termina:
 </p>
 
-<code>qemu-system-i386 -cpu SandyBridge -hda debian.img -m 80 -smp 1 -redir tcp:9022::22 -redir udp:9055::9987</code>
+<code><strong>qemu-system-i386 -cpu SandyBridge -hda debian.img -m 80 -smp 1 -redir tcp:9022::22 -redir udp:9055::9987</strong></code>
 
 Explicando:
 
@@ -122,61 +122,76 @@ Explicando:
 
 <h1>5- Quinta parte Iniciando o Teamspeak</h1>
 
-Bom agora que seu sistema ja esta rodando vamos baixar o Teamspeak dentro da maquina, no caso vamos baixar o Teamspeak Server versão 32 bits para Linux com o comando:
+<p>
+    Bom agora que seu sistema ja esta rodando vamos baixar o Teamspeak dentro da maquina, no caso vamos baixar o Teamspeak Server versão 32 bits para Linux com o comando:
+</p>
 
-<code>wget http://dl.4players.de/ts/releases/3.0.13.6/teamspeak3-server_linux_x86-3.0.13.6.tar.bz2</code>
+<code><strong>wget http://dl.4players.de/ts/releases/3.0.13.6/teamspeak3-server_linux_x86-3.0.13.6.tar.bz2</strong></code>
 
-Depois disso vamos descompactar o Teamspeak:
+<p>
+    Depois disso vamos descompactar o Teamspeak:
+</p>
 
-**tar -jxvf teamspeak3-server_linux_x86-3.0.13.6.tar.bz2**
+<code><strong>tar -jxvf teamspeak3-server_linux_x86-3.0.13.6.tar.bz2</strong></code>
 
-Vamos dar permissão total ao ts:
+<p>
+    Vamos dar permissão total ao ts:
+</p>
 
-**sudo chmod 777 teamspeak3-server_linux_x86-3.0.13.6**
+<code><strong>sudo chmod 777 teamspeak3-server_linux_x86-3.0.13.6</strong></code>
 obs: se der erro de nao ser sudoer entre como root, execute o comando su e coloque a sua senha de root.
 
-Certo depois disso vamos dentro da pasta do Teamspeak:
+<p>
+    Certo depois disso vamos dentro da pasta do Teamspeak:
+</p>
 
-**cd teamspeak3-server_linux_x86-3.0.13.6**
+<code><strong>cd teamspeak3-server_linux_x86-3.0.13.6</strong></code>
 
-E inicie o servidor, vou recomendar o script minimal por que mais para frente vai ter mais comando para usar todas as funcionalidades do servidor:
+<p>
+    E inicie o servidor, vou recomendar o script minimal por que mais para frente vai ter mais comando para usar todas as funcionalidades do servidor:
+</p>
 
-**./ts3server_minimal_runscript.sh**
+<code><strong>./ts3server_minimal_runscript.sh</strong></code>
 
-E depois disso aguarde ele iniciar o servidor somente para você configurar ele de inici e registrar o token de server admin.
-Obs: Para iniciar o servidor ele demora BASTANTE, leva em torno de 15-20 min somente para iniciar. Quando aparecer na tela que a palavra de Query onde mostra as portas utilizadas e etc o servidor ja terminou de levantar, caso contrario aguarde.
+<p>
+    E depois disso aguarde ele iniciar o servidor somente para você configurar ele de inici e registrar o token de server admin.
+    Obs: Para iniciar o servidor ele demora BASTANTE, leva em torno de 15-20 min somente para iniciar. Quando aparecer na tela que a palavra de Query onde mostra as portas utilizadas e etc o servidor ja terminou de levantar, caso contrario aguarde.
+</p>
 
-Depois de iniciado configure e finalize ele.
+<p>
+    Depois de iniciado configure e finalize ele.
+</p>
 
 
-## 6- Sexta parte Terminando a configuração
+<h1>6- Sexta parte Terminando a configuração</h1>
 
-Agora vamos configurar o restante das portas de uso do Teamspeak, o servidor usa as seguintes portas:
-voz udp 9055
-arquivo  tcp 30033
-query tcp 10011
+<p>
+    Agora vamos configurar o restante das portas de uso do Teamspeak, o servidor usa as seguintes portas:
+    voz udp 9055
+    arquivo  tcp 30033
+    query tcp 10011
+</p>
 
-E agora no momento de iniciar o servidor vamos ter que dizer para o Teamspeak usar estas portas por fato de caso você colocar mais de um servidor no seu raspberry você vai precisar direcionar para outras portas, mas caso queira ficar somente com as portas padrão nao tem necessidade de mudar as portas.
+<p>
+    E agora no momento de iniciar o servidor vamos ter que dizer para o Teamspeak usar estas portas por fato de caso você colocar mais de um servidor no seu raspberry você vai precisar direcionar para outras portas, mas caso queira ficar somente com as portas padrão nao tem necessidade de mudar as portas.
+</p>
 
-Esta parte pode ficar um pouco complicado mas como o servidor precisa de 3 portas para usar todas as funcionalidades nós precisamos iniciar a nossa maquina virtual com redir para 3 portas tirando a de ssh caso queira usar.
-Entao vamos usar este comando para iniciar a nossa maquina virtual: 
+<p>
+    Esta parte pode ficar um pouco complicado mas como o servidor precisa de 3 portas para usar todas as funcionalidades nós precisamos iniciar a nossa maquina virtual com redir para 3 portas tirando a de ssh caso queira usar.
+    Entao vamos usar este comando para iniciar a nossa maquina virtual: 
+</p>
 
-**qemu-system-i386 -cpu SandyBridge -hda debian.img -m 80 -smp 1 -redir tcp:9022::22 -redir udp:9055::9987 -redir tcp:30035::30035 -redir tcp:10015::10015**
+<code><strong>qemu-system-i386 -cpu SandyBridge -hda debian.img -m 80 -smp 1 -redir tcp:9022::22 -redir udp:9055::9987 -redir tcp:30035::30035 -redir tcp:10015::10015</strong></code>
 
-**Explicando**
-
--qemu-system-i386: É o programa para iniciar a maquina virtual.
-
--cpu: O tipo de cpu que vai ser usada.
-
--hda: Aqui é onde esta a imagem que criamos e ele vai simular um hd apartir da imagem.
-
--m: É a quantidade de memoria que vai ser alocada para cada maquina virtual, no caso eu optei por 80 megas e gostei.
-
--smp: Ainda nao sei XD</p>
-
-**redir: Agora vamos para as portas, preciso de 3 portas para a voz,arquivo e query então adicinei as 3 mais a ssh.**
-
+Explicando
+<ul>
+    <li>qemu-system-i386: É o programa para iniciar a maquina virtual.</li>
+    <li>cpu: O tipo de cpu que vai ser usada.</li>
+    <li>hda: Aqui é onde esta a imagem que criamos e ele vai simular um hd apartir da imagem.</li>
+    <li>m: É a quantidade de memoria que vai ser alocada para cada maquina virtual, no caso eu optei por 80 megas e gostei.</li>
+    <li>smp: Ainda nao sei XD</li>
+    <li><strong>redir: Agora vamos para as portas, preciso de 3 portas para a voz,arquivo e query então adicinei as 3 mais a ssh.</strong></li>
+</ul>
 Obs: Caso tenha certeza que esta correto você pode iniciar a maquina com a opção --nographic para nao aparecer a tela do qemu.
 
 E agora dentro da sua maquina virtual você vai iniciar o Teamspeak e pedindo para que ele use as portas que você abriu, assim você vai conseguir usar todas as portas de forma normal:

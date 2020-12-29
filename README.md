@@ -54,13 +54,9 @@
 
 <ul>
     <li>qemu-img.exe: É o programa usado para criar a imagem.</li>
-
     <li>create: Pedindo para criar.</li>
-
     <li>f: É o formato usado para a imagem.</li>
-
     <li>C:\debian.img :É o local e o nome que vai ser criado a imagem.</li>
-
     <li>1500M: É o tamanho que vai ser criado a imagem e neste caso achei que este tamanho esta perfeito.</li>
 </ul>
 

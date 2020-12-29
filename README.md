@@ -35,7 +35,8 @@
 <h1>2- Segunda parte Baixando e preparando a imagem</h1>
 
 <p>
-    Certo agora vamos baixar a iso do sistema que vamos usar, no caso é o [Debian netinst] (https://www.debian.org/CD/netinst/), é uma versão reduzida do debian e devemos baixar a versao i386 (x32) ate a presente data esta nesta versão debian-8.6.0-i386-netinst.iso. Neste [link] (https://cdimage.debian.org/debian-cd/8.6.0/i386/iso-cd/) possui todas as versões da iso. <href link="url">teste</href>
+    Certo agora vamos baixar a iso do sistema que vamos usar, no caso é o [Debian netinst] (https://www.debian.org/CD/netinst/), é uma versão reduzida do debian e devemos baixar a versao i386 (x32) ate a presente data esta nesta versão debian-8.6.0-i386-netinst.iso. Neste<a href="url">link text</a>
+ (https://cdimage.debian.org/debian-cd/8.6.0/i386/iso-cd/) possui todas as versões da iso.
 </p>
 
 Agora com a iso baixada e o qemu instalado eu vou seguir os passo que utilizei para criar a imagem no Windows, caso esteja usando o Linux para criar a imagem é so adaptar para seu sistema.

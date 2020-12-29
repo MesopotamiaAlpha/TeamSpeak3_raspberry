@@ -61,59 +61,66 @@
 </ul>
 
 
-## 3- Terceira parte Instalando o sistema
-Agora continuando dentro da pasta do quemu use este comando no CMD para iniciar a maquina e instalar o sistema:
+<h1>3- Terceira parte Instalando o sistema</h1>
 
-**qemu-system-i386.exe -cpu SandyBridge -hda C:\debian.img -cdrom C:\debian-8.6.0-i386-netinst.iso -boot d -m 512 -smp 1**
+<p>
+    Agora continuando dentro da pasta do quemu use este comando no CMD para iniciar a maquina e instalar o sistema:
+</p>
 
-**Explicando**:
+<code>qemu-system-i386.exe -cpu SandyBridge -hda C:\debian.img -cdrom C:\debian-8.6.0-i386-netinst.iso -boot d -m 512 -smp 1</code>
 
--qemu-system-i386.exe: É o programa para iniciar a maquina virtual.
+Explicando:
+<ul>
+    <li>qemu-system-i386.exe: É o programa para iniciar a maquina virtual.</li>
+    <li>cpu: É o tipo de cpu que vai ser usado e neste caso eu tive problemas com a arquitetura 486 proposta por outras pessoas, e pesquisando encontrei este SandyBridge no qual funcionou sem problemas.</li>
+    <li>cdrom: É onde esta a iso do netinst.</li>
+    <li>boot: Nao sei XD</li>
+    <li>m: Aqui é a quantidade de memoria que vai ser alocada para esta maquina, por ser instalação recomendo que deixe 512 mesmo somente para ser mais rapidinho.</li>
+    <li>smp não sei tambem XD</li>
+</ul>
 
--cpu: É o tipo de cpu que vai ser usado e neste caso eu tive problemas com a arquitetura 486 proposta por outras pessoas, e pesquisando encontrei este SandyBridge no qual funcionou sem problemas.
-
--cdrom: É onde esta a iso do netinst.
-
--boot: Nao sei XD
-
--m: Aqui é a quantidade de memoria que vai ser alocada para esta maquina, por ser instalação recomendo que deixe 512 mesmo somente para ser mais rapidinho.
-
--smp não sei tambem XD
-
-Após isto o qemu vai iniciar a sua imagem criada (debian.img) e instalar o sistema dentro dele, desta parte você pode seguir da forma que prefirir.
-
-------
-------
-## 4- Quarta parte Iniciando o sistema
-
-Certo agora com o sistema instalado dentro da imagem você vai transferir a imagem para dentro do seu raspberry, e uma das partes importantes entra agora.
-Para iniciar a maquina virtual você vai colocar este comando no termina:
-
-**qemu-system-i386 -cpu SandyBridge -hda debian.img -m 80 -smp 1 -redir tcp:9022::22 -redir udp:9055::9987**
-
-**Explicando**
-
--qemu-system-i386: É o programa para iniciar a maquina virtual.
-
--cpu: O tipo de cpu que vai ser usada.
-
--hda: Aqui é onde esta a imagem que criamos e ele vai simular um hd apartir da imagem.
-
--m: É a quantidade de memoria que vai ser alocada para cada maquina virtual, no caso eu optei por 80 megas e gostei.
-
--smp: ainda nao sei XD
-
-**-redir: Este comando é para redirecionar as conecções vindas na porta, no caso udp ou tcp> porta inicial> porta final dentro da maquina virtual. Esta parte é importante entender para funcionarm no caso eu quero que a conecção tcp que entrar na porta 9022 seja redirecionada para a porta 22 da minha maquina virtual, assim nao entra em conflito com a minha porta 22 do meu raspberry.*
-
-Obs:Estas portas que coloquei é somente de exemplo, use a que prefirir.
-
-Então a opção redir é primordial para coneguir abrir as portas e funcionar sem entrar em conflito com seu sistema operacional, no caso da porta udp 9055 vai ser onde vai entrar a porta de voz do Teamspeak e redirecionar para dentro da maquina na porta de voz 9987.
-
-Neste primeiro momento de iniciar o sistema o processamento de um dos cores do raspberry vai ficar alto mas ao terminar de iniciar ira voltar ao normal, e é normal a demora do inicio do sistema por fato do baixo recurso e do alto processamento.
+<p>
+    Após isto o qemu vai iniciar a sua imagem criada (debian.img) e instalar o sistema dentro dele, desta parte você pode seguir da forma que prefirir.
+</p>
 
 ------
-------
-## 5- Quinta parte Iniciando o Teamspeak
+
+<h1>4- Quarta parte Iniciando o sistema</h1>
+
+<p>
+    Certo agora com o sistema instalado dentro da imagem você vai transferir a imagem para dentro do seu raspberry, e uma das partes importantes entra agora.
+</p>
+
+<p>
+    Para iniciar a maquina virtual você vai colocar este comando no termina:
+</p>
+
+<code>qemu-system-i386 -cpu SandyBridge -hda debian.img -m 80 -smp 1 -redir tcp:9022::22 -redir udp:9055::9987</code>
+
+Explicando:
+
+<ul>
+    <li>qemu-system-i386: É o programa para iniciar a maquina virtual.</li>
+    <li>cpu: O tipo de cpu que vai ser usada.</li>
+    <li>hda: Aqui é onde esta a imagem que criamos e ele vai simular um hd apartir da imagem.</li>
+    <li>m: É a quantidade de memoria que vai ser alocada para cada maquina virtual, no caso eu optei por 80 megas e gostei.</li>
+    <li>smp: ainda nao sei XD</li>
+    <li><strong>redir: Este comando é para redirecionar as conecções vindas na porta, no caso udp ou tcp> porta inicial> porta final dentro da maquina virtual. Esta parte é importante entender para funcionarm no caso eu quero que a conecção tcp que entrar na porta 9022 seja redirecionada para a porta 22 da minha maquina virtual, assim nao entra em conflito com a minha porta 22 do meu raspberry.</strong></li>
+</ul>
+
+<p>
+    Obs:Estas portas que coloquei é somente de exemplo, use a que prefirir.
+</p>
+
+<p>
+    Então a opção redir é primordial para coneguir abrir as portas e funcionar sem entrar em conflito com seu sistema operacional, no caso da porta udp 9055 vai ser onde vai entrar a porta de voz do Teamspeak e redirecionar para dentro da maquina na porta de voz 9987.
+</p>
+
+<p>
+    Neste primeiro momento de iniciar o sistema o processamento de um dos cores do raspberry vai ficar alto mas ao terminar de iniciar ira voltar ao normal, e é normal a demora do inicio do sistema por fato do baixo recurso e do alto processamento.
+</p>
+
+<h1>5- Quinta parte Iniciando o Teamspeak</h1>
 
 Bom agora que seu sistema ja esta rodando vamos baixar o Teamspeak dentro da maquina, no caso vamos baixar o Teamspeak Server versão 32 bits para Linux com o comando:
 

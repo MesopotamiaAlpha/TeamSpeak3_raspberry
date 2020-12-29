@@ -35,29 +35,34 @@
 <h1>2- Segunda parte Baixando e preparando a imagem</h1>
 
 <p>
-    Certo agora vamos baixar a iso do sistema que vamos usar, no caso é o <a href="https://www.debian.org/CD/netinst/">Debian netinst</a>, é uma versão reduzida do debian e devemos baixar a versao i386 (x32) ate a presente data esta nesta versão debian-8.6.0-i386-netinst.iso. Neste<a href="https://cdimage.debian.org/debian-cd/8.6.0/i386/iso-cd/">LINK</a>possui todas as versões da iso.
+    Certo agora vamos baixar a iso do sistema que vamos usar, no caso é o <a href="https://www.debian.org/CD/netinst/">Debian netinst</a>, é uma versão reduzida do debian e devemos baixar a versao i386 (x32) ate a presente data esta nesta versão debian-8.6.0-i386-netinst.iso. Neste <a href="https://cdimage.debian.org/debian-cd/8.6.0/i386/iso-cd/">LINK </a>possui todas as versões da iso.
 </p>
 
-Agora com a iso baixada e o qemu instalado eu vou seguir os passo que utilizei para criar a imagem no Windows, caso esteja usando o Linux para criar a imagem é so adaptar para seu sistema.
+<p>
+    Agora com a iso baixada e o qemu instalado eu vou seguir os passo que utilizei para criar a imagem no Windows, caso esteja usando o Linux para criar a imagem é so adaptar para seu sistema.
+</p>
 
-Vamos criar a imagem agora para rodar o sistema, abra o CMD e entre na pasta do qemu _C:\Program Files\qemu_ e para criar a imagem use este comando:
-obs: no caso do linux somente rodando o comando qemu-img ele ja chama o programa sem a necessidade de entrar na pasta.
+<p>
+    Vamos criar a imagem agora para rodar o sistema, abra o CMD e entre na pasta do qemu <code><i>C:\Program Files\qemu</i></code> e para criar a imagem use este comando:
+    obs: no caso do linux somente rodando o comando qemu-img ele ja chama o programa sem a necessidade de entrar na pasta.
+</p>
 
-**qemu-img.exe create -f qcow2 C:\debian.img 1500M**
+<code><strong>qemu-img.exe create -f qcow2 C:\debian.img 1500M</strong></code>
 
 
-**Explicando:**
+<strong>Explicando:</strong>
 
--qemu-img.exe: É o programa usado para criar a imagem.
+<ul>
+<li>qemu-img.exe: É o programa usado para criar a imagem.</li>
 
--create: Pedindo para criar.
+<li>create: Pedindo para criar.</li>
 
--f: É o formato usado para a imagem.
+<li>f: É o formato usado para a imagem.</li>
 
--C:\debian.img :É o local e o nome que vai ser criado a imagem.
+<li>C:\debian.img :É o local e o nome que vai ser criado a imagem.</li>
 
--1500M: É o tamanho que vai ser criado a imagem e neste caso achei que este tamanho esta perfeito.
-
+<li>1500M: É o tamanho que vai ser criado a imagem e neste caso achei que este tamanho esta perfeito.</li>
+</ul>
 ------
 ------
 

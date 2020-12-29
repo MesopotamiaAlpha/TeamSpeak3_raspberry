@@ -105,7 +105,7 @@ Neste primeiro momento de iniciar o sistema o processamento de um dos cores do r
 
 Bom agora que seu sistema ja esta rodando vamos baixar o Teamspeak dentro da maquina, no caso vamos baixar o Teamspeak Server versão 32 bits para Linux com o comando:
 
-wget http://dl.4players.de/ts/releases/3.0.13.6/teamspeak3-server_linux_x86-3.0.13.6.tar.bz2
+<code>wget http://dl.4players.de/ts/releases/3.0.13.6/teamspeak3-server_linux_x86-3.0.13.6.tar.bz2</code>
 
 Depois disso vamos descompactar o Teamspeak:
 

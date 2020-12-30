@@ -20,14 +20,14 @@
 </p>
 
 <p>
-    Estou utilizando o Raspberry pi 3 e sistema operacional Raspbian mesmo do site da raspberry, fiz uma pequena modificação no sistema somente para não ter a tela de descanço e o aumento da memoria swap onde deixei dentro da pasta opcional o arquivo com o nome <a href="https://github.com/novaspirit/rpi_zram">zram</a>.
+    Estou utilizando o Raspberry pi 3 e sistema operacional Raspbian mesmo do site da raspberry, fiz uma pequena modificação no sistema somente para não ter a tela de descanço e o aumento da memoria swap onde deixei dentro da pasta opcional o arquivo com o nome <a href="https://github.com/novaspirit/rpi_zram" >zram</a>.
 </p>
 
 <h2>1- Primeira parte Preparando o sistema</h2>
 
 <p>
     Bom durante a pesquisa verifiquei que a melhor forma que encontraram de conseguir fazer o servidor do Teamspeak de 32 bits rodar na arquitetura ARM foi de rodar uma máquina virtual dentro do raspberry e rodar o Teamspeak dentro dele, imaginei que talvez ia usar muito recurso do rasp mas consegui achar um meio termo dele onde rodou muito bem.
-    Para isso vamos instalar no raspbian (sistema operacional usado no raspberry) o <a href="https://www.qemu.org/">qemu</a>:
+    Para isso vamos instalar no raspbian (sistema operacional usado no raspberry) o <a href="https://www.qemu.org/" target="_blank" rel="external">qemu</a>:
 </p>
 
 <code><strong>sudo apt-get install qemu</strong></code>
@@ -43,7 +43,7 @@
 <h2>2- Segunda parte Baixando e preparando a imagem</h2>
 
 <p>
-    Certo agora vamos baixar a iso do sistema que vamos usar, no caso é o <a href="https://www.debian.org/CD/netinst/">Debian netinst</a>, é uma versão reduzida do debian e devemos baixar a versao i386 (x32) ate a presente data esta nesta versão debian-8.6.0-i386-netinst.iso. Neste <a href="https://cdimage.debian.org/debian-cd/8.6.0/i386/iso-cd/">LINK </a>possui todas as versões da iso.
+    Certo agora vamos baixar a iso do sistema que vamos usar, no caso é o <a href="https://www.debian.org/CD/netinst/" target="_blank" rel="external">Debian netinst</a>, é uma versão reduzida do debian e devemos baixar a versao i386 (x32) ate a presente data esta nesta versão debian-8.6.0-i386-netinst.iso. Neste <a href="https://cdimage.debian.org/debian-cd/8.6.0/i386/iso-cd/" target="_blank" rel="external">LINK </a>possui todas as versões da iso.
 </p>
 
 <p>

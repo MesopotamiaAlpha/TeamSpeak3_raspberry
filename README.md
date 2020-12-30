@@ -83,8 +83,6 @@ Explicando:
     Após isto o qemu vai iniciar a sua imagem criada (debian.img) e instalar o sistema dentro dele, desta parte você pode seguir da forma que prefirir.
 </p>
 
-------
-
 <h1>4- Quarta parte Iniciando o sistema</h1>
 
 <p>
@@ -194,14 +192,19 @@ Explicando
 </ul>
 Obs: Caso tenha certeza que esta correto você pode iniciar a maquina com a opção --nographic para nao aparecer a tela do qemu.
 
-E agora dentro da sua maquina virtual você vai iniciar o Teamspeak e pedindo para que ele use as portas que você abriu, assim você vai conseguir usar todas as portas de forma normal:
+<p>
+    E agora dentro da sua maquina virtual você vai iniciar o Teamspeak e pedindo para que ele use as portas que você abriu, assim você vai conseguir usar todas as portas de forma normal:
+</p>
 
-**./ts3server_minimal_runscript.sh filetransfer_ip=0.0.0.0 filetransfer_port=30035 query_ip=0.0.0.0 query_port=10015**
+<code><strong>./ts3server_minimal_runscript.sh filetransfer_ip=0.0.0.0 filetransfer_port=30035 query_ip=0.0.0.0 query_port=10015</strong></code>
 
-Desta forma quando alguem for upar algum arquivo no seu servidor ou fazer alguma query o proprio TS vai direcionar para a porta que você pediu.
+<p>
+    Desta forma quando alguem for upar algum arquivo no seu servidor ou fazer alguma query o proprio TS vai direcionar para a porta que você pediu.
+</p>
 
+<h1>Final</h1>
 
-## Final
-
-Bom até esta parte o teu servidor ja deve estar rodando e funcionando perfeitamente, em termos de performance da maquina virtual ainda nao encontrei maneiras de acelerar o carregamento do sistema e do servidor, mas o desempenho do client do ts esta perfeito.
-Tenho uma pasta no meu github que são de coisas opcionais que coloquei para automatizar o servidor em casos de quedas de luz e etc.. Mas não sou programador então algumas coisas podem estar em um estado primario de programação.
+<p>
+    Bom até esta parte o teu servidor ja deve estar rodando e funcionando perfeitamente, em termos de performance da maquina virtual ainda nao encontrei maneiras de acelerar o carregamento do sistema e do servidor, mas o desempenho do client do ts esta perfeito.
+    Tenho uma pasta no meu github que são de coisas opcionais que coloquei para automatizar o servidor em casos de quedas de luz e etc.. Mas não sou programador então algumas coisas podem estar em um estado primario de programação.
+</p>

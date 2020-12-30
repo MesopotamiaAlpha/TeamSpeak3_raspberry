@@ -9,6 +9,9 @@
     Bom eu estou documentando este projeto pois levei alguns meses para conseguir o resultado que eu queria no servidor, e quero compartilhar o conhecimento que adquiri para outras pessoas que queiram fazer o mesmo, por muito tempo eu conseguia encontrar algumas pessoas que conseguiram instalar e rodar o Teamspeak server no raspberry mas boa parte não documentava o processo, e alguns casos que encontrava informações elas não funcionavam da maneira correta, obrigando a ter que pesquisar ainda mais para conseguir fazer tudo funcionar.
     Eu tenho conhecimento do Exagear que consegue fazer os programas de 32 bits rodarem de forma "nativa" na arquitetura ARM, mas no meu caso não tenho 93 reais para investir em um programa que derrepente posso usar em poucas ocasiões,além do mumble.
     Então foi onde resolvi iniciar este projeto de rodar o servidor de Teamspeak de maneira alternativa.
+</p>
+
+<p>
     Vou tentar deixar o mais simples de entender pois não quero que outros tenham a mesma dificuldade que tive e tempo que levei para entender e rodar.
     Lembrando que esta escolha do qemu tem um desempenho bem devagar para iniciar a maquina virtual e iniciar o servidor dentro dele, é uma escolha alternativa mesmo para quem não quer investir com o Exagear, mas ele não afeta em quase nada no raspberry.
 </p>
@@ -17,7 +20,7 @@
     Estou utilizando o raspberry pi 3 e sistema operacional Raspbian mesmo do site da raspberry, fiz uma pequena modificação no sistema somente para não ter a tela de descanço e o aumento da memoria swap onde deixei dentro da pasta opcional o arquivo com o nome zram.
 </p>
 
-<h1>1- Primeira parte Preparando o sistema</h1>
+<h2>1- Primeira parte Preparando o sistema</h2>
 
 <p>
     Bom durante a pesquisa verifiquei que a melhor forma que encontraram de conseguir fazer o servidor do Teamspeak de 32 bits rodar na arquitetura ARM foi de rodar uma máquina virtual dentro do raspberry e rodar o Teamspeak dentro dele, imaginei que talvez ia usar muito recurso do rasp mas consegui achar um meio termo dele onde rodou muito bem.

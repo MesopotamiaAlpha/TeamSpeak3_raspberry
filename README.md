@@ -20,7 +20,7 @@
 </p>
 
 <p>
-    Estou utilizando o Raspberry pi 3 e sistema operacional Raspbian mesmo do site da raspberry, fiz uma pequena modificação no sistema somente para não ter a tela de descanço e o aumento da memoria swap onde deixei dentro da pasta opcional o arquivo com o nome <a href="https://github.com/novaspirit/rpi_zram" >zram</a>.
+    Estou utilizando o Raspberry pi 3 e sistema operacional Raspbian mesmo do site da raspberry, fiz uma pequena modificação no sistema somente para não ter a tela de descanço e o aumento da memoria swap onde deixei dentro da pasta opcional o arquivo com o nome <a href="https://github.com/novaspirit/rpi_zram" target="_blank" rel="external">zram</a>.
 </p>
 
 <h2>1- Primeira parte Preparando o sistema</h2>
